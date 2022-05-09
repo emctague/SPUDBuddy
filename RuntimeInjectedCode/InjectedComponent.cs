@@ -24,6 +24,7 @@ namespace RuntimeInjectedCode
 
         public void OnGUI()
         {
+            GUILayout.BeginArea(new Rect((Screen.width / 3) * 2, 0, Screen.width / 3, Screen.height));
             // Screen Selection
             GUILayout.BeginHorizontal("box");
             for (int i = 0; i < _cheatScreens.Count; i++)
@@ -37,17 +38,21 @@ namespace RuntimeInjectedCode
             GUILayout.EndHorizontal();
 
             // Screen zero hides everything
-            if (_screen == 0) return;
+            if (_screen != 0)
+            {
+                // Draw the current screen in a scroll view
+                GUILayout.BeginVertical("box");
+                GUILayout.Label(_cheatScreens[_screen].Name);
 
-            // Draw the current screen in a scroll view
-            GUILayout.BeginVertical("box");
-            GUILayout.Label(_cheatScreens[_screen].Name);
+                _scrollPos = GUILayout.BeginScrollView(_scrollPos, false, false, GUILayout.ExpandHeight(true),
+                    GUILayout.ExpandWidth(true));
+                _cheatScreens[_screen].DrawUI();
 
-            _scrollPos = GUILayout.BeginScrollView(_scrollPos, false, false, GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
-            _cheatScreens[_screen].DrawUI();
-            
-            GUILayout.EndScrollView();
-            GUILayout.EndVertical();
+                GUILayout.EndScrollView();
+                GUILayout.EndVertical();
+            }
+
+            GUILayout.EndArea();
         }
 
     }
