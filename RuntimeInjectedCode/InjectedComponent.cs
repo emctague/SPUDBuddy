@@ -19,6 +19,7 @@ namespace RuntimeInjectedCode
             _cheatScreens.Add(gameObject.AddComponent<CamCheatScreen>());
             _cheatScreens.Add(gameObject.AddComponent<PlayerCheatScreen>());
             _cheatScreens.Add(gameObject.AddComponent<MapCheatScreen>());
+            _cheatScreens.Add(gameObject.AddComponent<ConfigurablesCheatScreen>());
         }
 
         public void OnGUI()

@@ -11,6 +11,22 @@ namespace RuntimeInjectedCode
 
         public void DrawUI()
         {
+            if (GUILayout.Button("Toggle Occlusion Culling"))
+            {
+                StanleyController.Instance.cam.useOcclusionCulling =
+                    !StanleyController.Instance.cam.useOcclusionCulling;
+            }
+
+            if (GUILayout.Button("Far Plane *2"))
+            {
+                StanleyController.Instance.cam.farClipPlane *= 2;
+            }
+
+            if (GUILayout.Button("Far Plane /2"))
+            {
+                StanleyController.Instance.cam.farClipPlane /= 2;
+            }
+            
             if (GUILayout.Button("No Fog"))
             {
                 _noFog = !_noFog;
