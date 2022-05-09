@@ -1,14 +1,16 @@
 # SPUDBuddy
 
-This is a mod and injection tool that works with The Stanley Parable: Ultra Deluxe.
+This is a mod, and accompanying injection tool, that works with The Stanley Parable: Ultra Deluxe.
 
 It consists of two projects:
 
- - The UnityPatcher csproj is a command-line tool that patches the Unity CoreModule DLL to 
+ - **UnityPatcher** is a command-line tool that patches the Unity CoreModule DLL to 
    create a version which will load and run RuntimeInjectedCode.
- - RuntimeInjectedCode is a class library that, when built as a DLL and placed in the
-   Data/Managed folder of a game that has been patched by UnityPatcher, will
+ - **RuntimeInjectedCode** is a class library that, when built as a DLL and placed in the
+   `Data/Managed` folder of a game that has been patched by UnityPatcher, will
    provide some simple cheat tools for TSP:UD.
+
+This project might also be useful as a template for creating similar tools for *other* Unity-based games: the patcher is quite game-independent, and the RuntimeInjectedCode mod's injection and cheat-screen system are not specific to TSP either.
 
 ## Building / Installing
 
