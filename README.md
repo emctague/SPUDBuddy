@@ -2,7 +2,26 @@
 
 This is a mod, and accompanying injection tool, that works with The Stanley Parable: Ultra Deluxe.
 
-It consists of two projects:
+## Features
+
+Notable features include:
+
+ - Scene inspection and manipulation
+ - Camera: disable culling, view wireframe, etc.
+ - NoClip mode
+ - Inspect and alter game state and save data
+   - ...this also means you can make Stanley jump anywhere ;)
+   - ...and allows you to enable console behaviours on desktop
+   - ...and much, much more
+ - Load any map
+ - Toggle Bucket
+ - Increase step height (makes it so Stanley can instantly "step" up onto objects almost as tall as he is)
+
+Other minor features are also present.
+
+## SPUDBuddy Structure
+
+SPUDBuddy consists of two projects:
 
  - **UnityPatcher** is a command-line tool that patches the Unity CoreModule DLL to 
    create a version which will load and run RuntimeInjectedCode.
