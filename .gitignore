@@ -1,0 +1,12 @@
+Managed/
+[Oo]bj
+[Bb]in
+[Rr]elease
+[Dd]ebug
+*.exe
+*.dll
+*.pdb
+*.bak
+*.user
+*.csproj.user
+.DS_Store
