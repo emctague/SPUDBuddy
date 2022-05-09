@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityPatcher", "UnityPatcher\UnityPatcher.csproj", "{BA1AA24C-2537-4534-87B4-C8408ADED9BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuntimeInjectedCode", "RuntimeInjectedCode\RuntimeInjectedCode.csproj", "{33FF6E6D-C324-423C-9974-DCC9413C3AF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA1AA24C-2537-4534-87B4-C8408ADED9BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA1AA24C-2537-4534-87B4-C8408ADED9BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA1AA24C-2537-4534-87B4-C8408ADED9BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA1AA24C-2537-4534-87B4-C8408ADED9BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33FF6E6D-C324-423C-9974-DCC9413C3AF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33FF6E6D-C324-423C-9974-DCC9413C3AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33FF6E6D-C324-423C-9974-DCC9413C3AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33FF6E6D-C324-423C-9974-DCC9413C3AF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
