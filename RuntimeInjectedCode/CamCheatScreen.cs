@@ -5,7 +5,7 @@ namespace RuntimeInjectedCode
 {
     public class CamCheatScreen : MonoBehaviour, ICheatScreen
     {
-        private bool _doFog = false;
+        private bool _noFog = false;
         private bool _wobbleFov = false;
 
         public string GetName()
@@ -15,9 +15,9 @@ namespace RuntimeInjectedCode
 
         public void DrawUI()
         {
-            if (GUILayout.Button("Fog"))
+            if (GUILayout.Button("No Fog"))
             {
-                _doFog = !_doFog;
+                _noFog = !_noFog;
             }
 
             if (GUILayout.Button("Invert Cull"))
@@ -49,15 +49,10 @@ namespace RuntimeInjectedCode
                 StanleyController.Instance.FieldOfViewAdditiveModifier = (float)Math.Sin(Time.time) * 10;
             }
 
-            // Sometimes fog gets reset, so we repeatedly check and reenable it
-            if (_doFog)
+            // Sometimes fog gets reset, so we repeatedly check and re-disable it
+            if (_noFog)
             {
-                RenderSettings.fog = true;
-                RenderSettings.fogDensity = 10.0f;
-                RenderSettings.fogEndDistance = 10.0f;
-                RenderSettings.fogStartDistance = 1.0f;
-                RenderSettings.fogColor = Color.black;
-                RenderSettings.fogMode = FogMode.Exponential;
+                RenderSettings.fog = false;
             }
         }
     }
