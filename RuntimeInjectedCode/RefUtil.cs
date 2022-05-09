@@ -1,5 +1,8 @@
 namespace RuntimeInjectedCode
 {
+    /// <summary>
+    /// Shorthand for setting and getting private field values via reflection.
+    /// </summary>
     public class RefUtil
     {
         public static void Set<T>(string field, object target, T value)

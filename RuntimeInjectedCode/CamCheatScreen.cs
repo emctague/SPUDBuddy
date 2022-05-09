@@ -5,13 +5,9 @@ namespace RuntimeInjectedCode
 {
     public class CamCheatScreen : MonoBehaviour, ICheatScreen
     {
-        private bool _noFog = false;
-        private bool _wobbleFov = false;
-
-        public string GetName()
-        {
-            return "Cam";
-        }
+        private bool _noFog;
+        private bool _wobbleFov;
+        public string Name => "Cam";
 
         public void DrawUI()
         {
@@ -32,13 +28,18 @@ namespace RuntimeInjectedCode
 
             if (GUILayout.Button("Orthographic"))
             {
-                Camera.main.orthographic = !Camera.main.orthographic;
-                Camera.main.orthographicSize = 5.0f;
+                var cam = StanleyController.Instance.cam;
+                cam.orthographic = !cam.orthographic;
+                cam.orthographicSize = 5.0f;
             }
             
             if (GUILayout.Button("Wobble FOV"))
             {
                 _wobbleFov = !_wobbleFov;
+                if (!_wobbleFov)
+                {
+                    StanleyController.Instance.FieldOfViewAdditiveModifier = 0;
+                }
             }
         }
 

@@ -10,10 +10,7 @@ namespace RuntimeInjectedCode
         private bool _bigStep = false;
         private bool _forceJump = false;
 
-        public string GetName()
-        {
-            return "Player";
-        }
+        public string Name => "Player";
 
         public void DrawUI()
         {
@@ -116,7 +113,7 @@ namespace RuntimeInjectedCode
                 movementInput.x = Singleton<GameMaster>.Instance.stanleyActions.Movement.X;
                 movementInput.z = y;
                 movementInput = Vector3.ClampMagnitude(movementInput, 1f);
-                movementInput *= Time.deltaTime;
+                movementInput *= Time.deltaTime * 2.0f;
 
                 StanleyController.Instance.transform.position += StanleyController.Instance.camTransform.TransformDirection(movementInput);
             }

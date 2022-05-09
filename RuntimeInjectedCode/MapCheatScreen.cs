@@ -39,11 +39,8 @@ namespace RuntimeInjectedCode
             "zending_UD_MASTER",
             "eight_UD_MASTER",
         };
-        
-        public string GetName()
-        {
-            return "Map";
-        }
+
+        public string Name => "Map";
 
         public void DrawUI()
         {

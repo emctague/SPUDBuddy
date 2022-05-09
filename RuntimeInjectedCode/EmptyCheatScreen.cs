@@ -4,11 +4,7 @@ namespace RuntimeInjectedCode
 {
     public class EmptyCheatScreen : MonoBehaviour, ICheatScreen
     {
-        public string GetName()
-        {
-            return "X";
-        }
-
+        public string Name => "X";
         public void DrawUI()
         {
             

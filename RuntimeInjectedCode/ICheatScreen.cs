@@ -2,7 +2,7 @@ namespace RuntimeInjectedCode
 {
     public interface ICheatScreen
     {
-        string GetName();
+        string Name { get; }
         void DrawUI();
     }
 }

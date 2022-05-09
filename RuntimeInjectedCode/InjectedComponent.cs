@@ -1,16 +1,17 @@
-using System;
 using System.Collections.Generic;
-using RuntimeInjectedCode;
 using UnityEngine;
 
-namespace UnityPatcher
+namespace RuntimeInjectedCode
 {
+    /// <summary>
+    /// The InjectedComponent is responsible for drawing one or more CheatScreens in a menu across the screen.
+    /// </summary>
     public class InjectedComponent : MonoBehaviour
     {
         private Vector2 _scrollPos;
         private int _screen;
 
-        private List<ICheatScreen> _cheatScreens = new List<ICheatScreen>();
+        private readonly List<ICheatScreen> _cheatScreens = new List<ICheatScreen>();
 
         public void Start()
         {
@@ -22,17 +23,26 @@ namespace UnityPatcher
 
         public void OnGUI()
         {
+            // Screen Selection
             GUILayout.BeginHorizontal("box");
             for (int i = 0; i < _cheatScreens.Count; i++)
-                if (GUILayout.Button(_cheatScreens[i].GetName())) _screen = i;
+            {
+                if (GUILayout.Button(_cheatScreens[i].Name))
+                {
+                    _screen = i;
+                    _scrollPos = Vector2.zero;
+                }
+            }
             GUILayout.EndHorizontal();
 
+            // Screen zero hides everything
             if (_screen == 0) return;
 
+            // Draw the current screen in a scroll view
             GUILayout.BeginVertical("box");
-            GUILayout.Label(_cheatScreens[_screen].GetName());
+            GUILayout.Label(_cheatScreens[_screen].Name);
 
-            _scrollPos = GUILayout.BeginScrollView(_scrollPos, false, true, GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
+            _scrollPos = GUILayout.BeginScrollView(_scrollPos, false, false, GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
             _cheatScreens[_screen].DrawUI();
             
             GUILayout.EndScrollView();
