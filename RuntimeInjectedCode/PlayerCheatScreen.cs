@@ -4,11 +4,10 @@ namespace RuntimeInjectedCode
 {
     public class PlayerCheatScreen : MonoBehaviour, ICheatScreen
     {
-        private bool _noclip = false;
+        private bool _noclip;
         private float _originalRadius;
         private float _originalStepOffset;
-        private bool _bigStep = false;
-        private bool _forceJump = false;
+        private bool _bigStep;
 
         public string Name => "Player";
 
@@ -53,14 +52,6 @@ namespace RuntimeInjectedCode
                 {
                     charControl.stepOffset = _originalStepOffset;
                 }
-            }
-            
-            if (GUILayout.Button("Can Jump"))
-            {
-                _forceJump = !_forceJump;
-
-                RefUtil.Get<BooleanConfigurable>("jumpConfigurable", StanleyController.Instance).SetValue(_forceJump);
-                RefUtil.Set("executeJump", StanleyController.Instance, _forceJump);
             }
 
             if (GUILayout.Button("Bark!"))
