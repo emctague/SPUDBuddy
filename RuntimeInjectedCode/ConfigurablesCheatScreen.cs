@@ -26,33 +26,24 @@ namespace RuntimeInjectedCode
             
             foreach (var c in _configurables)
             {
-                if (c.GetConfigurableType() == ConfigurableTypes.Boolean)
+                switch (c.GetConfigurableType())
                 {
-                    if (GUILayout.Button(c.Key + " = " + c.PrintValue()))
-                    {
-                        ((BooleanConfigurable)c).SetValue(!c.GetBooleanValue());
-                    }
+                    case ConfigurableTypes.Int:
+                        UIFieldEditors.IntEditor(c.Key, c.GetIntValue(), ((IntConfigurable)c).SetValue);
+                        break;
+                    case ConfigurableTypes.Float:
+                        UIFieldEditors.FloatEditor(c.Key, c.GetFloatValue(), ((FloatConfigurable)c).SetValue);
+                        break;
+                    case ConfigurableTypes.Boolean:
+                        UIFieldEditors.BooleanEditor(c.Key, c.GetBooleanValue(), ((BooleanConfigurable)c).SetValue);
+                        break;
+                    case ConfigurableTypes.String:
+                        UIFieldEditors.StringEditor(c.Key, c.GetStringValue(), ((StringConfigurable)c).SetValue);
+                        break;
+                    default:
+                        GUILayout.Label(c.Key + " = " + c.PrintValue());
+                        break;
                 }
-                else if (c.GetConfigurableType() == ConfigurableTypes.Int)
-                {
-                    GUILayout.BeginHorizontal(GUIStyle.none);
-                    GUILayout.Label(c.Key + " = " + c.PrintValue());
-                    if (GUILayout.Button("+"))
-                    {
-                        ((IntConfigurable)c).SetValue(c.GetIntValue() + 1);
-                    }
-                    if (GUILayout.Button("-"))
-                    {
-                        ((IntConfigurable)c).SetValue(c.GetIntValue() - 1);
-                    }
-                    GUILayout.EndHorizontal();
-                }
-                else
-                {
-                    GUILayout.Label(c.Key + " = " + c.PrintValue());
-                }
-                
-                
             }
             
         }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace RuntimeInjectedCode
 {
@@ -47,7 +48,15 @@ namespace RuntimeInjectedCode
 
                 _scrollPos = GUILayout.BeginScrollView(_scrollPos, false, false, GUILayout.ExpandHeight(true),
                     GUILayout.ExpandWidth(true));
-                _cheatScreens[_screen].DrawUI();
+
+                try
+                {
+                    _cheatScreens[_screen].DrawUI();
+                }
+                catch (Exception e)
+                {
+                    GUILayout.Label(e.ToString());
+                }
 
                 GUILayout.EndScrollView();
                 GUILayout.EndVertical();

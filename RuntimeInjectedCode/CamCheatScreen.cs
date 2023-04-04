@@ -11,52 +11,27 @@ namespace RuntimeInjectedCode
 
         public void DrawUI()
         {
-            if (GUILayout.Button("Toggle Occlusion Culling"))
-            {
-                StanleyController.Instance.cam.useOcclusionCulling =
-                    !StanleyController.Instance.cam.useOcclusionCulling;
-            }
-
-            if (GUILayout.Button("Far Plane *2"))
-            {
-                StanleyController.Instance.cam.farClipPlane *= 2;
-            }
-
-            if (GUILayout.Button("Far Plane /2"))
-            {
-                StanleyController.Instance.cam.farClipPlane /= 2;
-            }
+            var cam = StanleyController.Instance.cam;
             
-            if (GUILayout.Button("No Fog"))
+            UIFieldEditors.BooleanEditor("Occlusion Culling", cam.useOcclusionCulling, f => cam.useOcclusionCulling = f);
+            UIFieldEditors.FloatEditor("Far Plane", cam.farClipPlane, f => cam.farClipPlane = f);
+            UIFieldEditors.BooleanEditor("No Fog", _noFog, f => _noFog = f);
+            UIFieldEditors.BooleanEditor("Invert Culling", GL.invertCulling, f => GL.invertCulling = f);
+            UIFieldEditors.BooleanEditor("Wireframe", GL.wireframe, f => GL.wireframe = f);
+            UIFieldEditors.BooleanEditor("Orthographic", cam.orthographic, f =>
             {
-                _noFog = !_noFog;
-            }
-
-            if (GUILayout.Button("Invert Cull"))
-            {
-                GL.invertCulling = !GL.invertCulling;
-            }
-
-            if (GUILayout.Button("Wireframe"))
-            {
-                GL.wireframe = !GL.wireframe;
-            }
-
-            if (GUILayout.Button("Orthographic"))
-            {
-                var cam = StanleyController.Instance.cam;
-                cam.orthographic = !cam.orthographic;
+                cam.orthographic = f;
                 cam.orthographicSize = 5.0f;
-            }
+            });
             
-            if (GUILayout.Button("Wobble FOV"))
+            UIFieldEditors.BooleanEditor("Wobble FOV", _wobbleFov, f =>
             {
-                _wobbleFov = !_wobbleFov;
+                _wobbleFov = f;
                 if (!_wobbleFov)
                 {
                     StanleyController.Instance.FieldOfViewAdditiveModifier = 0;
                 }
-            }
+            });
         }
 
         public void Update()

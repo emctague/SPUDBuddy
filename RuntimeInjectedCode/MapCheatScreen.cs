@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Reflection;
 
 namespace RuntimeInjectedCode
 {
@@ -44,11 +45,15 @@ namespace RuntimeInjectedCode
 
         public void DrawUI()
         {
-            foreach (var m in MapNames)
+
+            var rScenes = (System.Collections.Generic.List<ReleaseMap.ReleaseScene>) typeof(AssetBundleControl).GetField("releaseScenes", BindingFlags.NonPublic | BindingFlags.Static)
+                .GetValue(null);
+            
+            foreach (var m in rScenes)
             {
-                if (GUILayout.Button(m))
+                if (GUILayout.Button(m.SceneName))
                 {
-                    Singleton<GameMaster>.Instance.ChangeLevel(m);
+                    Singleton<GameMaster>.Instance.ChangeLevel(m.SceneName);
                 }
             }
         }
